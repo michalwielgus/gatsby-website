@@ -1,9 +1,16 @@
-import * as React from "react"
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import * as React from 'react';
+import { Link } from 'gatsby';
+import { StaticImage } from 'gatsby-plugin-image';
+import styled from 'styled-components';
 
-import Layout from "../components/layout"
-import Seo from "../components/seo"
+import Layout from '../components/layout';
+import Seo from '../components/seo';
+
+const StyledDiv = styled.div`
+  width: 100px;
+  height: 100px;
+  background: red;
+`;
 
 const IndexPage = () => (
   <Layout>
@@ -15,10 +22,11 @@ const IndexPage = () => (
       src="../images/gatsby-astronaut.png"
       width={300}
       quality={95}
-      formats={["auto", "webp", "avif"]}
+      formats={['auto', 'webp', 'avif']}
       alt="A Gatsby astronaut"
       style={{ marginBottom: `1.45rem` }}
     />
+    <StyledDiv />
     <p>
       <Link to="/page-2/">Go to page 2</Link> <br />
       <Link to="/using-typescript/">Go to "Using TypeScript"</Link> <br />
@@ -26,6 +34,6 @@ const IndexPage = () => (
       <Link to="/using-dsg">Go to "Using DSG"</Link>
     </p>
   </Layout>
-)
+);
 
-export default IndexPage
+export default IndexPage;
