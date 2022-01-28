@@ -1,16 +1,29 @@
-import * as React from "react"
-import { Link } from "gatsby"
+import * as React from 'react';
+import { graphql } from 'gatsby';
 
-import Layout from "../components/layout"
-import Seo from "../components/seo"
+import PageHeader from '../components/PageHeader/PageHeader';
+import ArticlesPreview from '../components/ArticlePreview/ArticlePreview';
 
-const ArticlesPage = () => (
-  <Layout>
-    <Seo title="Articles page" />
-    <h1>Hi from the Articles page</h1>
-    <p>Welcome to page 2</p>
-    <Link to="/">Go back to the homepage</Link>
-  </Layout>
-)
+const ArticlesPage = ({ data }) => (
+  <>
+    <PageHeader />
+    <ArticlesPreview posts={data.allDatoCmsArticle.nodes} />
+  </>
+);
 
-export default ArticlesPage
+export const query = graphql`
+  query ArticlePreviews {
+    allDatoCmsArticle {
+      nodes {
+        id
+        featuredImage {
+          alt
+          gatsbyImageData
+        }
+        author
+        title
+      }
+    }
+  }
+`;
+export default ArticlesPage;
